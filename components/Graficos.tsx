@@ -13,6 +13,7 @@ import {
   PieChart,
   Pie,
   Cell,
+  PieLabelRenderProps,
 } from 'recharts';
 
 interface GraficosProps {
@@ -98,15 +99,19 @@ export function Graficos({
           cx="50%"
           cy="50%"
           labelLine={false}
-          label={({ nombre, frecuenciaRelativa }: any) =>
-            `${nombre}: ${frecuenciaRelativa.toFixed(1)}%`
-          }
+          label={(props: PieLabelRenderProps) => {
+            // payload contiene la fila original del dataset
+            const payload = (props.payload as Record<string, unknown> | undefined) ?? {};
+            const nombre = (payload['nombre'] as string) ?? (props.name as string) ?? '';
+            const frecuenciaRelativa = Number(payload['frecuenciaRelativa'] ?? props.value ?? 0);
+            return `${nombre}: ${frecuenciaRelativa.toFixed(1)}%`;
+          }}
           outerRadius={120}
           fill="#8884d8"
           dataKey="frecuenciaRelativa"
         >
-          {datosGrafico.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          {datosGrafico.map((entry, _index) => (
+            <Cell key={`cell-${_index}`} fill={COLORS[_index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip
