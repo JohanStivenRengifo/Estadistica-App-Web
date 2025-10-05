@@ -101,9 +101,13 @@ export function Graficos({
           labelLine={false}
           label={(props: PieLabelRenderProps) => {
             // payload contiene la fila original del dataset
-            const payload = (props.payload as Record<string, unknown> | undefined) ?? {};
-            const nombre = (payload['nombre'] as string) ?? (props.name as string) ?? '';
-            const frecuenciaRelativa = Number(payload['frecuenciaRelativa'] ?? props.value ?? 0);
+            const payload =
+              (props.payload as Record<string, unknown> | undefined) ?? {};
+            const nombre =
+              (payload['nombre'] as string) ?? (props.name as string) ?? '';
+            const frecuenciaRelativa = Number(
+              payload['frecuenciaRelativa'] ?? props.value ?? 0
+            );
             return `${nombre}: ${frecuenciaRelativa.toFixed(1)}%`;
           }}
           outerRadius={120}
@@ -111,7 +115,10 @@ export function Graficos({
           dataKey="frecuenciaRelativa"
         >
           {datosGrafico.map((entry, _index) => (
-            <Cell key={`cell-${_index}`} fill={COLORS[_index % COLORS.length]} />
+            <Cell
+              key={`cell-${_index}`}
+              fill={COLORS[_index % COLORS.length]}
+            />
           ))}
         </Pie>
         <Tooltip

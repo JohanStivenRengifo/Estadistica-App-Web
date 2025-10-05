@@ -1,8 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { DatosSimples, DatosAgrupados, TipoDatos, ResultadosEstadisticos } from '../lib/types';
-import { EstadisticasSimples, EstadisticasAgrupadas } from '../lib/estadisticas';
+import {
+  DatosSimples,
+  DatosAgrupados,
+  TipoDatos,
+  ResultadosEstadisticos,
+} from '../lib/types';
+import {
+  EstadisticasSimples,
+  EstadisticasAgrupadas,
+} from '../lib/estadisticas';
 import { EntradaDatos } from './EntradaDatos';
 import { ResultadosTabla } from './ResultadosTabla';
 import { Graficos } from './Graficos';
@@ -155,7 +163,8 @@ export default function EstadisticaApp() {
             ) : (
               <div className="text-center py-8">
                 <p className="text-gray-500">
-                  Ingresa datos y presiona &quot;Calcular&quot; para ver los resultados
+                  Ingresa datos y presiona &quot;Calcular&quot; para ver los
+                  resultados
                 </p>
               </div>
             )}
