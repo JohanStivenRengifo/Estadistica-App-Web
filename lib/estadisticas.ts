@@ -1,11 +1,8 @@
 // Utilidades para cálculos estadísticos
 
 import {
-    DatosSimples,
     DatosAgrupados,
     FrecuenciaTabla,
-    MedidasTendenciaCentral,
-    MedidasDispersion,
     IntervaloClase
 } from './types';
 
@@ -38,8 +35,8 @@ export class EstadisticasSimples {
 
         const maxFrecuencia = Math.max(...frecuencias.values());
         const modas = Array.from(frecuencias.entries())
-            .filter(([_, freq]) => freq === maxFrecuencia)
-            .map(([valor, _]) => valor);
+            .filter(([, freq]) => freq === maxFrecuencia)
+            .map(([valor]) => valor);
 
         return modas;
     }

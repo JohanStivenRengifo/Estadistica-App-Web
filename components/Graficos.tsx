@@ -140,18 +140,16 @@ export function Graficos({
       );
     }
 
-    const datosHistograma = datosAgrupados.intervalos.map(
-      (intervalo, index) => ({
-        nombre: `[${intervalo.limiteInferior.toFixed(
-          1
-        )}-${intervalo.limiteSuperior.toFixed(1)})`,
-        frecuencia: intervalo.frecuencia,
-        densidad:
-          intervalo.frecuencia /
-          (intervalo.limiteSuperior - intervalo.limiteInferior),
-        marcaClase: intervalo.marcaClase,
-      })
-    );
+    const datosHistograma = datosAgrupados.intervalos.map((intervalo) => ({
+      nombre: `[${intervalo.limiteInferior.toFixed(
+        1
+      )}-${intervalo.limiteSuperior.toFixed(1)})`,
+      frecuencia: intervalo.frecuencia,
+      densidad:
+        intervalo.frecuencia /
+        (intervalo.limiteSuperior - intervalo.limiteInferior),
+      marcaClase: intervalo.marcaClase,
+    }));
 
     return (
       <ResponsiveContainer width="100%" height={400}>
