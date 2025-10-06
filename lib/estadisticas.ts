@@ -1,10 +1,4 @@
-// Utilidades para cálculos estadísticos
-
-import {
-    DatosAgrupados,
-    FrecuenciaTabla,
-    IntervaloClase
-} from './types';
+import { DatosAgrupados, FrecuenciaTabla, IntervaloClase } from './types';
 
 // Cálculos para datos simples
 export class EstadisticasSimples {
@@ -45,7 +39,7 @@ export class EstadisticasSimples {
         if (datos.length === 0) return 0;
         const media = this.calcularMedia(datos);
         const sumaCuadrados = datos.reduce((sum, valor) => sum + Math.pow(valor - media, 2), 0);
-        return sumaCuadrados / datos.length;
+        return sumaCuadrados / (datos.length - 1);
     }
 
     static calcularDesviacionEstandar(datos: number[]): number {
@@ -164,7 +158,7 @@ export class EstadisticasAgrupadas {
         const totalFrecuencias = intervalos.reduce((sum, intervalo) =>
             sum + intervalo.frecuencia, 0);
 
-        return totalFrecuencias > 0 ? sumaProductos / totalFrecuencias : 0;
+        return totalFrecuencias > 1 ? sumaProductos / (totalFrecuencias - 1) : 0;
     }
 
     static calcularDesviacionEstandar(datosAgrupados: DatosAgrupados): number {
